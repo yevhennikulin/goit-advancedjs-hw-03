@@ -20,7 +20,6 @@ async function handleSubmit(event) {
 
   if (!query) {
     iziToast.warning({
-      title: 'Warning',
       message: 'Please enter a search query',
       position: 'topRight',
     });
@@ -35,19 +34,25 @@ async function handleSubmit(event) {
 
     if (data.hits.length === 0) {
       iziToast.error({
-        title: 'Error',
         message:
-          'Sorry, there are no images matching your search query. Please try again!',
+          'Sorry, there are no images matching your search query. Please, try again!',
         position: 'topRight',
+        backgroundColor: '#ef4040',
+        messageColor: '#fff',
+        iconColor: '#fff',
+        close: true,
+        closeOnClick: true,
       });
     } else {
       createGallery(data.hits);
     }
   } catch (error) {
     iziToast.error({
-      title: 'Error',
       message: 'Something went wrong. Please try again later.',
       position: 'topRight',
+      backgroundColor: '#ef4040',
+      messageColor: '#fff',
+      iconColor: '#fff',
     });
     console.error(error);
   } finally {
